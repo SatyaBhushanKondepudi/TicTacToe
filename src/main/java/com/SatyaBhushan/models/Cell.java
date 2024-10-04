@@ -48,4 +48,13 @@ public class Cell {
     public void setPlayer(Player player) {
         this.player = player;
     }
+
+    //print symbol
+    public void printSymbol(){
+        if(getCellState().equals(CellState.EMPTY)){
+            System.out.print(" - |");
+        }else{
+            System.out.println(" " + getPlayer().getSymbol().getAchar() + " |");
+        }
+    }
 }

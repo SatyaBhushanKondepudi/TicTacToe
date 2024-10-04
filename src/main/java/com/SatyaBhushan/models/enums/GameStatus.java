@@ -1,8 +1,9 @@
 package com.SatyaBhushan.models.enums;
 
-public enum GameState {
+public enum GameStatus {
     IN_PROGRESS ,
     WIN ,
     DRAW ,
-    PAUSE
+    PAUSE,
+    ENDED
 }

@@ -31,4 +31,9 @@ public class Bot extends Player{
     public void setBotPlayingStratergy(BotPlayingStratergy botPlayingStratergy) {
         this.botPlayingStratergy = botPlayingStratergy;
     }
+
+
+    public Cell makeMove(){
+        return null;
+    }
 }
