@@ -2,7 +2,8 @@ package com.SatyaBhushan.models;
 
 import com.SatyaBhushan.models.enums.BotDifficultyLevel;
 import com.SatyaBhushan.models.enums.PlayerType;
-import com.SatyaBhushan.stratergies.BotPlayingStratergy;
+import com.SatyaBhushan.stratergies.botPlayingStratergies.BotPlayingStratergy;
+import com.SatyaBhushan.stratergies.botPlayingStratergies.BotPlayingStratergyFactory;
 
 public class Bot extends Player{
     private BotDifficultyLevel difficultyLevel;
@@ -12,6 +13,8 @@ public class Bot extends Player{
                BotDifficultyLevel botDifficultyLevel) {
         super(symbol, name, PlayerType.BOT);
         this.difficultyLevel = botDifficultyLevel;
+        this.botPlayingStratergy = BotPlayingStratergyFactory
+                .getBotPlayingStratergyForDifficultyLevel(botDifficultyLevel);
     }
 
     //Getters & Setters
@@ -33,7 +36,8 @@ public class Bot extends Player{
     }
 
 
-    public Cell makeMove(){
-        return null;
+    @Override
+    public Cell makeMove(Board board){
+        return botPlayingStratergy.makeMove(board);
     }
 }

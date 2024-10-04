@@ -54,7 +54,7 @@ public class Cell {
         if(getCellState().equals(CellState.EMPTY)){
             System.out.print(" - |");
         }else{
-            System.out.println(" " + getPlayer().getSymbol().getAchar() + " |");
+            System.out.print(" " + getPlayer().getSymbol().getAchar() + " |");
         }
     }
 }

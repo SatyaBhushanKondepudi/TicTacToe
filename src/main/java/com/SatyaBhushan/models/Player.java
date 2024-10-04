@@ -19,6 +19,7 @@ public class Player {
         this.symbol = symbol;
         this.name = name;
         this.playerType = playerType;
+        this.scanner = new Scanner(System.in);
     }
 
     public Symbol getSymbol() {
@@ -53,7 +54,7 @@ public class Player {
         this.playerType = playerType;
     }
 
-    public Cell makeMove(){
+    public Cell makeMove(Board board){
         System.out.println("Please tell row number (starting from 0)");
         int row = scanner.nextInt();
 

@@ -105,6 +105,7 @@ public class Game {
             System.out.println("Game is draw");
         }
     }
+
     public void makeMove(){
         /*
         Find who is the currentPlayer
@@ -125,7 +126,7 @@ public class Game {
 
         Player currentPlayer = playersList.get(currentPlayerIndex);
         System.out.println("It is " + currentPlayer.getName() + "'s turn.");
-        Cell proposedCell = currentPlayer.makeMove();
+        Cell proposedCell = currentPlayer.makeMove(board);
         System.out.println("Move made at row: " + proposedCell.getRow() +
                 " col: " + proposedCell.getColumn() + ".");
         if(!validateMove(proposedCell)){
@@ -176,6 +177,35 @@ public class Game {
             return false;
         }
         return board.getBoard().get(row).get(col).getCellState().equals(CellState.EMPTY);
+    }
+
+    public void undo(){
+        /*
+        1. For First move - No Undo
+        2. Get the lastMove
+        3.
+         */
+        if (movesList.size() == 0) {
+            System.out.println("No move. Can't undo.");
+            return;
+        }
+        Move lastMove = movesList.get(movesList.size() - 1);
+
+        for(WinningStrategy winningStrategy :winningStrategyList){
+            winningStrategy.handleUndo(board, lastMove);
+        }
+
+        Cell cellInBoard = lastMove.getCell();
+        cellInBoard.setCellState(CellState.EMPTY);
+        cellInBoard.setPlayer(null);
+
+        movesList.remove(lastMove);
+
+        currentPlayerIndex -= 1;
+        currentPlayerIndex += playersList.size();
+        currentPlayerIndex %= playersList.size();
+
+
     }
 
     public static Builder getBuilder(){

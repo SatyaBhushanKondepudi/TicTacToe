@@ -6,10 +6,12 @@ public class BotPlayingStratergyFactory {
 
     public static BotPlayingStratergy getBotPlayingStratergyForDifficultyLevel
             (BotDifficultyLevel difficultyLevel){
-        return switch (difficultyLevel){
-            case EASY -> new EasyBotPlayingStratergy();
-            case MEDIUM -> new MediumBotPlayingStratergy();
-            case HARD -> new HardBotPlayingStratergy();
-        };
+        System.out.println("Hello Bot");
+        return new EasyBotPlayingStratergy();
+//        return switch (difficultyLevel){
+//            case EASY -> new EasyBotPlayingStratergy();
+//            case MEDIUM -> new MediumBotPlayingStratergy();
+//            case HARD -> new HardBotPlayingStratergy();
+//        };
     }
 }
